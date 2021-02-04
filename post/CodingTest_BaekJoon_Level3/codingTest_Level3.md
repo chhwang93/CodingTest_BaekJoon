@@ -2,7 +2,7 @@
 
 ### 2739번 문제 - 구구단
 
-```jsx
+```markdown
 /// <summary>
     /// 2739번 문제
     /// </summary>
@@ -51,7 +51,7 @@
 
 ### 10950번 문제 - A+B 합 for문
 
-```jsx
+```markdown
 using System;
 
 namespace Baekjoon
@@ -106,3 +106,103 @@ namespace Baekjoon
 - 그 후 입력 값은 A와 B 값으로 입력됨
 - 최종적으로 입력된 값은 for문을 돌면서 출력됨
 - 한 번에 맞춤
+
+
+
+### 8393번 문제 - 합
+
+```
+using System;
+
+namespace Baekjoon
+{
+    internal class Question8393
+    {
+        public static void Main(string[] args)
+        {
+            //입력값 
+            var input = Console.ReadLine();
+
+            if(input!=null)
+            {
+                //int 변환 검사
+                if(int.TryParse(input, out int num))
+                {
+                    //총 합
+                    var total = 0;
+
+                    //for문 돌면서 더한다.
+                    for(int i=1; i<=num; i++)
+                    {
+                        total += i;
+                    }
+
+                    //출력값
+                    Console.WriteLine(total);
+                }
+            }
+        }
+    }
+}
+```
+
+* 입력된 값을 활용하여 for문을 돌면서 합을 구하는 문제
+* 간단한 문제라 맞춤
+
+
+
+### 15552번 문제 - 빠른 A+B
+
+```markdown
+using System;
+using System.Text;
+
+namespace Baekjoon
+{
+    internal class Question15552
+    {
+        public static void Main(string[] args)
+        {
+            //입력값 
+            var inputNum = Console.ReadLine();
+            var sb = new StringBuilder();
+
+            if (inputNum != null)
+            {
+                //int 변환 검사
+                if (int.TryParse(inputNum, out int num))
+                {
+                    //최대값은 1,000,000
+                    if (num <= 1000000)
+                    {
+                        //StringBuilder로 문자열을 추가한다.
+                        for (int i = 0; i < num; i++)
+                        {
+                            var result = Console.ReadLine().Split(' ');
+
+                            if(int.TryParse(result[0], out int A) && int.TryParse(result[1], out int B))
+                            {
+                                sb.Append(A + B);
+                                sb.Append("\n");
+                            }
+                        }
+
+                        Console.WriteLine(sb);
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+* 기존 A+B의 합을 구하는 방식에서 실행속도가 빨라야한다.
+* 처음에는 Split() 함수가 느렸다고 생각해 자르지 않고 할 수 있는 방법을 찾아봤는데 시간초과가 생각보다 맞추기 어려웠다.
+* Microsoft Docs에서 String 관련된 내용을  확인하면 String을 수정하게 되면 새로운 문자열을 만들기 때문에 속도가 느린 것이었다.
+
+![image-20210205004851559](../../image/stringbuilder.png)
+
+
+
+* 따라서 StringBuilder를 통해 값을 합치는 방식을 사용하여 새 문자열을 생성하지 않도록 작성하였다.
+* 그 후 제출하여 무사히 통과하였다.
