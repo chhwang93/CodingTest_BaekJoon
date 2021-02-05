@@ -206,3 +206,129 @@ namespace Baekjoon
 
 * 따라서 StringBuilder를 통해 값을 합치는 방식을 사용하여 새 문자열을 생성하지 않도록 작성하였다.
 * 그 후 제출하여 무사히 통과하였다.
+
+
+
+### 2741번 문제 - N 찍기
+
+```
+using System;
+using System.Text;
+
+namespace Baekjoon
+{
+    internal class Question2741
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            var sb = new StringBuilder();
+
+            if(int.TryParse(input, out int num))
+            {
+                if(num >=1 && num<=100000)
+                {
+                    for(int i=1; i<=num; i++)
+                    {
+                        sb.Append(i);
+                        sb.AppendLine();
+                    }
+
+                    Console.WriteLine(sb);
+                }
+            }
+        }
+    }
+}
+```
+
+* for문으로 입력된 값 N만큼을 1~N값을 한줄에 하나씩 출력하는 문제
+* 위의 빠른 A+B에 비하면 쉬웠으나 문제 자체가 시간 제한이 있는 줄 모르고 for문마다 Console.WriteLine을 작성했더니 시간초과로 틀렸다.
+* 다시 StringBuilder를 통해 값을 저장하고 한 번에 출력함으로써 통과
+
+
+
+### 2742번 문제 - 기찍 N
+
+```markdown
+using System;
+using System.Text;
+
+namespace Baekjoon
+{
+    internal class Question2742
+    { 
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            var sb = new StringBuilder();
+
+            if(int.TryParse(input, out int num))
+            {
+                if(num>=1 && num <=100000)
+                {
+                    for(int i=num; i>=1; i--)
+                    {
+                        sb.Append(i);
+                        sb.AppendLine();
+                    }
+
+                    Console.WriteLine(sb);
+                }
+            }
+        }
+    }
+}
+```
+
+* 위의 2741번 문제를 그냥 리버스시킨 내용이다. 그래서 그런지 문제 이름도 기찍 N
+* 방법은 2741번 문제와 동일하다. StringBuilder로 합쳐주고 한 번에 출력해주면 끝
+* 한 번에 통과
+
+
+
+### 11021번 문제 - A+B - 7
+
+```
+using System;
+using System.Text;
+
+namespace Baekjoon
+{
+    internal class Question11021
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            var sb = new StringBuilder();
+
+            if(int.TryParse(input, out int num))
+            {
+                for(int i=1; i<=num; i++)
+                {
+                    var inputAB = Console.ReadLine().Split();
+                    if(inputAB.Length==2)
+                    {
+                        var a = int.Parse(inputAB[0]);
+                        var b = int.Parse(inputAB[1]);
+                        if ((a > 0 && a < 10) && (b > 0 && b < 10))
+                        {
+                            sb.Append("Case #");
+                            sb.Append(i);
+                            sb.Append(": ");
+                            sb.Append(a + b);
+                            sb.AppendLine();
+                        }
+                    }
+                }
+
+                Console.WriteLine(sb);
+            }
+        }
+    }
+}
+```
+
+* 15552번 문제의 출력을 조금 더 아름답게 출력하기 위한 문제
+* 위의 A+B 문제와 방법은 동일하다. 입력 개수를 받고 입력 개수만큼 for문을 돌면서 StringBuilder에 문자열을 합쳐주고 출력
+* 문자열을 빠르게 출력하는 방식은 15552번 문제를 한 번 겪고 나니 금방 풀 수 있게 됨
