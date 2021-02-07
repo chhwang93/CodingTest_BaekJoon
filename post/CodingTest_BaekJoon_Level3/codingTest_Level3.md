@@ -332,3 +332,146 @@ namespace Baekjoon
 * 15552번 문제의 출력을 조금 더 아름답게 출력하기 위한 문제
 * 위의 A+B 문제와 방법은 동일하다. 입력 개수를 받고 입력 개수만큼 for문을 돌면서 StringBuilder에 문자열을 합쳐주고 출력
 * 문자열을 빠르게 출력하는 방식은 15552번 문제를 한 번 겪고 나니 금방 풀 수 있게 됨
+
+
+
+### 11022번 문제 - A+B - 8
+
+```
+using System;
+using System.Text;
+
+namespace Baekjoon
+{
+    internal class Question11022
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            var sb = new StringBuilder();
+
+            if(int.TryParse(input, out int num))
+            {
+                for(int i=1; i<=num; i++)
+                {
+                    var inputAB = Console.ReadLine().Split();
+                    if(inputAB.Length==2)
+                    {
+                        var a = int.Parse(inputAB[0]);
+                        var b = int.Parse(inputAB[1]);
+                        if ((a > 0 && a < 10) && (b > 0 && b < 10))
+                        {
+                            sb.Append("Case #");
+                            sb.Append(i);
+                            sb.Append(": ");
+                            sb.Append(a);
+                            sb.Append(" + ");
+                            sb.Append(b);
+                            sb.Append(" = ");
+                            sb.Append(a + b);
+                            sb.AppendLine();
+                        }
+                    }
+                }
+
+                Console.WriteLine(sb);
+            }
+        }
+    }
+}
+```
+
+* 11021번 문제에서 조금 더 아름답게 만드는 문제이다.
+* 계속해서 비슷한 문제가 출제되는 것으로 봐서 입출력 관련하여 시간 제한을 두고 익숙하라는 뜻 같다.
+* 내용은 11021번 문제와 거의 동일하기 때문에 따로 해석을 안해도 될 것으로 보임
+
+
+
+### 2438번 문제 - 별 찍기 - 1
+
+```
+using System;
+using System.Text;
+
+namespace Baekjoon
+{
+    internal class Question2438
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            var sb = new StringBuilder();
+
+            if(int.TryParse(input, out int num))
+            {
+                if (num >= 1 && num <= 100)
+                {
+                    for (int i = 1; i <= num; i++)
+                    {
+                        for (int j = 0; j < i; j++)
+                        {
+                            sb.Append("*");
+                        }
+                        sb.AppendLine();
+                    }
+                    Console.WriteLine(sb);
+                }
+            }
+        }
+    }
+}
+```
+
+* 입력된 N 개수만큼 별을 출력한다.
+* 이중 for문을 이용하여 *을 출력하고 StringBuilder로 합친 후 출력한다.
+* for문 관련하여 문제를 계속해서 풀 때마다 익숙해지는 것 같다.
+
+
+
+### 2439번 문제 - 별 찍기 - 2
+
+```
+using System;
+using System.Text;
+
+namespace Baekjoon
+{
+    internal class Question2439
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            var sb = new StringBuilder();
+
+            if(int.TryParse(input, out int num))
+            {
+                if(num>=1 && num<=100)
+                {
+                    for(int i=0; i<num; i++)
+                    {
+                        for(int j=0; j<num; j++)
+                        {
+                            if(j<num-(i+1))
+                            {
+                                sb.Append(" ");
+                            }
+                            else
+                            {
+                                sb.Append("*");
+                            }
+                        }
+                        sb.AppendLine();
+                    }
+
+                    Console.WriteLine(sb);
+                }
+            }
+        }
+    }
+}
+```
+
+* 2438번의 별 찍기 문제에서 오른쪽 기준으로 별이 정렬하도록 만드는 문제
+* 2438번 문제의 경우 그냥 for문을 돌려서 별을 출력했지만 이번 문제는 공백과 별이 들어간다.
+  * 이중 포문을 돌면서 i가 증가할 때마다 공백이 줄어들고 별이 추가되는 방식으로 작성하였다.
+* 한 번에 통과
