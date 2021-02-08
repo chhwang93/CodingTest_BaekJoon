@@ -475,3 +475,73 @@ namespace Baekjoon
 * 2438번 문제의 경우 그냥 for문을 돌려서 별을 출력했지만 이번 문제는 공백과 별이 들어간다.
   * 이중 포문을 돌면서 i가 증가할 때마다 공백이 줄어들고 별이 추가되는 방식으로 작성하였다.
 * 한 번에 통과
+
+
+
+### 10871번 문제 - X보다 작은 수
+
+```markdown
+using System;
+using System.Text;
+
+namespace Baekjoon
+{
+    internal class Question10871
+    {
+        public static void Main(string[] args)
+        {
+            var sb = new StringBuilder();
+            //첫 번째 입력(개수와 비교할 숫자)
+            var input = Console.ReadLine().Split(' ');
+            
+            //입력이 2개인 경우만 처리
+            if(input.Length==2)
+            {
+                var num = int.Parse(input[0]);
+                var x = int.Parse(input[1]);
+
+                //입력 시퀀스 배열을 구한다.
+                var inputSequence = Console.ReadLine().Split(' ');
+                var count = inputSequence.Length;
+
+                //위에서 제시한 개수와 동일한 개수가 들어갈 때만 처리
+                if (num == count)
+                {
+                    for (int i = 0; i < count; i++)
+                    {
+                        var value = int.Parse(inputSequence[i]);
+
+                        //값을 비교하여 비교값보다 작은 경우 StringBuilder에 추가한다.
+                        if (value < x)
+                        {
+                            sb.Append(value);
+                            sb.Append(" ");
+                        }
+                    }
+                    //최종 출력
+                    Console.WriteLine(sb);
+                }
+            }
+        }
+    }
+}
+```
+
+* for문 코딩테스트 마지막 문제
+
+* 입력값으로 정수 N과 비교할 정수 X가 주어지며 N만큼 입력된 정수로부터 X를 비교하여 X보다 작은 경우 출력하는 문제
+
+* 처음에 정수 N을 입력받고 그에 따른 Console.ReadLine()을 작성하는 줄 알았다.
+
+  ![image-20210208225747670](../../image/example_10871.png)
+  * 예제 입력에는 첫 째 줄에 정수 및 비교할 값을 입력받고 둘 째줄에 수열을 입력받기 때문에 Console.ReadLine()은 한 번만 쓰되 입력된 정수의 개수와 정수 N을 비교하여 일치하는 경우만 출력하도록 코드를 짰다.
+
+* 문자열의 Split() 함수를 통해 공백에 따라 자르고 개수가 일치하는 경우 for문을 돌면서 비교했을 때 정수 X보다 작은 경우 StringBuilder에 추가하도록 하였다.
+
+* 어떻게 보면 다른 언어에 비해 의도와 다르게 풀이해서 한 번에 통과하지  못할 줄 알았는데 한 번에 통과를 했다.
+
+* 속도도 1등과 4ms 정도만 차이가 나서 속도면에서는 문제가 없었던 것 같다.
+
+  ![image](../../image/example_10871_2.png)
+
+  
