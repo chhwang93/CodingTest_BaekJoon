@@ -294,3 +294,140 @@ namespace Baekjoon
 * 최대값을 구하고 구한 점수 배열을 재 계산하고 평균을 출력한다.
 * 시간은 92ms가 걸렸고 1등과 4ms로 크게 차이가 안났다.
 * 한 번에 통과
+
+
+
+### 8958번 문제  - OX퀴즈
+
+```
+using System;
+using System.Text;
+
+namespace BaekJoon
+{
+    internal class Question8958
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            var sb = new StringBuilder();
+
+            if(int.TryParse(input, out int num))
+            {
+                for(int i=0; i<num; i++)
+                {
+                    var inputValue = Console.ReadLine();
+
+                    var count = inputValue.Length;
+
+                    if (count > 0 && count < 80)
+                    {
+                        var total = 0;
+                        var current = 0;
+
+                        for (int j = 0; j < count; j++)
+                        {
+                            if (inputValue[j] == 'O' || inputValue[j] == 'o')
+                            {
+                                current++;
+                                total += current;
+                            }
+                            else
+                            {
+                                current = 0;
+                            }
+                        }
+                        sb.Append(total);
+                        sb.AppendLine();
+                    }
+                }
+
+                Console.WriteLine(sb);
+            }
+        }
+    }
+}
+```
+
+* 첫 번째 입력값을 정수 N으로 받아 정수 N만큼 OX결과값을 입력으로 받고 O인 경우 문제의 점수는 그 문제까지 연속된  O의 개수가 되고 총합을 출력하는 문제
+* 입력받은 OX결과값을 String으로 받아 for문을 돌면서 O인지 X인지 비교한다.
+  * O인 경우 현재값을 더하고 현재값을 총합에 더한다.
+  * X인 경우 현재값을 초기화한다.
+* 그 후 StringBuilder를 통해 출력한다.
+* 시간은 96ms로 1등과 4ms 차이가 났다.
+* 한 번에 통과
+
+
+
+### 4344번 문제 - 평균은 넘겠지
+
+```
+using System;
+using System.Text;
+
+namespace BaekJoon
+{
+    internal class Question4344
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            var sb = new StringBuilder();
+
+            //테스트 케이스 개수를 입력받는다.(개수는 1<=N<=100)
+            if(int.TryParse(input, out int num) && (num>=1&& num<=1000))
+            {
+                for(int i=0; i<num; i++)
+                {
+                    //공백으로 입력값을 구분한다.
+                    var inputValue = Console.ReadLine().Split(' ');
+                    var count = inputValue.Length;
+                    var total = 0;
+                    var array = new int[count-1];
+
+                    //첫 번째 수는 개수를 의미하기 때문에 1부터 시작
+                    for(int j=1; j<count; j++)
+                    {
+                        //점수 값을 배열에 저장하고 총합을 더한다.(점수는 0<=Value<=100)
+                        if(int.TryParse(inputValue[j], out int value) && (value>=0 && value<=100))
+                        {
+                            array[j - 1] = value;
+                            total += value;
+                        }
+                    }
+
+                    count = array.Length;
+                    var cur = 0;
+                    //평균을 구한다.
+                    var avg = (float)total / (float)count;
+                    
+                    //평균보다 높은 점수를 가진 개수를 구한다.
+                    for(int j=0; j<count; j++)
+                    {
+                        if(avg < array[j])
+                        {
+                            cur++;
+                        }
+                    }
+
+                    //비율 값을 구한다.
+                    var result = ((float)cur / (float)count)*100;
+
+                    sb.Append(result.ToString("N3"));
+                    sb.AppendLine("%");
+                }
+
+                Console.WriteLine(sb);
+            }
+        }
+    }
+}
+```
+
+* 정답 비율 37.452%의 문제, 첫 째 줄에 테스트 케이스 개수가 주어지며 둘 째 줄에 점수 개수와 점수 개수에 맞는 점수들이 주어진다.
+  * 점수의 평균보다 점수가 높은 학생의 수를 구하고 비율을 소수점 셋째 자리수까지 구하여 출력하도록 함
+* 문제 자체는 그렇게 어렵지 않아 총합을 구하고 평균을 구해서 평균과 점수를 비교하여 점수가 평균보다 높으면 현재값을 더하여 비율을 구한다.
+* 시간은 위의 코드로 작성했을 때 112ms가 나왔고 1위는 88ms가 걸렸다.
+  * 조건식에서 시간이 걸리는 것을 확인하여 점수를 구할 때 int.TryParse()와 value값 조건식을 제거하고 나니 92ms로 1등과 4ms차이가 난 것을 확인
+  * 시간이 ms 단위로 차이나기 때문에 조건식으로 예외처리 하는 것이 중요하다고 보고 위의 코드로 작성함
+* 한 번에 통과했다.
