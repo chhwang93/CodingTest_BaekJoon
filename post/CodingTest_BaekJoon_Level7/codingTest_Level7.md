@@ -116,3 +116,115 @@ namespace BaekJoon
 * 문자열 함수 중 IndexOf()는 포함하지 않는 경우 -1을 반환하기 때문에 문제의 해답과 가깝다고 생각하여 코드를 변경한 결과 짧은 코드 및 좋은 가독성을 얻게 되었다.
 * 시간은 96ms로 1등과 4ms 차이가 났다.
 * 한 번에 통과
+
+
+
+### 2675번 문제 - 문자열 반복
+
+#### 첫 번째 작성한 코드
+
+```
+using System;
+using System.Text;
+
+namespace BaekJoon
+{
+    internal class Question2675
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+
+            if (int.TryParse(input, out int num))
+            {
+                for (int i = 0; i < num; i++)
+                {
+                    if (num >= 1 && num <= 1000)
+                    {
+                        var inputArray = Console.ReadLine().Split(' ');
+                        var count = inputArray.Length;
+
+                        if (count == 2)
+                        {
+                            var repeat = int.Parse(inputArray[0]);
+                            var stringLength = inputArray[1].Length;
+                            var sb = new StringBuilder();
+
+                            for (int j = 0; j < stringLength; j++)
+                            {
+                                for (int k = 0; k < repeat; k++)
+                                {
+                                    sb.Append(inputArray[1][j]);
+                                }
+                            }
+                            Console.WriteLine(sb);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+#### 개선한 코드
+
+```using System;
+using System.Text;
+
+namespace BaekJoon
+{
+    internal class Question2675
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+
+            if (int.TryParse(input, out int num))
+            {
+                for (int i = 0; i < num; i++)
+                {
+                    if (num >= 1 && num <= 1000)
+                    {
+                        var inputArray = Console.ReadLine();
+                        var stringLength = inputArray.Length;
+                      
+                        if (stringLength > 0)
+                        {
+                            var repeatNum = inputArray[0] - '0';
+                            var sb = new StringBuilder();
+
+                            for (int cur = 2; cur < stringLength; cur++)
+                            {
+                                for (int r = 0; r < repeatNum; r++)
+                                {
+                                    sb.Append(inputArray[cur]);
+                                }
+                            }
+                            Console.WriteLine(sb);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+---
+
+![image](https://user-images.githubusercontent.com/76270432/108075620-eb0bbc00-70ad-11eb-8ae6-078b1fc44e94.png)
+
+---
+
+* 첫 번째줄에는 테스트 케이스의 개수 T가 주어지며, 두 번째줄부터 정수 R과 문자열 S가 주어지며 문자열의 각 문자를 R번 반복하여 출력하는 문제
+
+* 첫 번째 작성했을 때 문자열을 Stringn.Split() 함수로 자르고 정수와 문자열을 구분하여 for문을 돌면서 코드를 작성했다.
+
+  * 한 번에 통과했지만 92ms로 1등과의 차이는 8ms가 났다.
+
+* 두 번째 작성할 때는 조금 더 간결하고 빠르게 하기 위해 String.Split()을 사용하지 않고 첫 번째는 정수이기 때문에 아스키코드 값을 통해 정수를 구하고 공백을 제외하고 입력값의 두 번째 자리수부터 문자열이 입력되기 때문에 2부터 입력값의 길이만큼 for문을 돌면서 반복문자를 출력하였다.
+
+  * 88ms로 줄어들었고 메모리도 많이 줄어들어 1등과의 차이는 4ms가 났다.
+
+    
