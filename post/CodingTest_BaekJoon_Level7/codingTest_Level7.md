@@ -335,3 +335,101 @@ namespace BaekJoon
 * 입력 받은 문자열을 소문자 문자열로 변환 후 최대값을 가진 알파벳의 인덱스를 구한다. 그 후 알파벳의 배열을 비교하면서 최대값과 동일한 인덱스가 있는 경우 ?을 출력하고 아닌 경우 대문자 알파벳을 출력한다.
 * 처음에 작성했을 때 시간은 132ms가 나왔으며 개선한 코드에서는 112ms로 20ms가 줄어든 것을 확인했다.
 * 한 번에 통과
+
+
+
+### 1152번 문제 - 단어의 개수
+
+#### 첫 번째 작성한 코드
+
+```
+using System;
+
+namespace BaekJoon
+{
+    internal class Question1152
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            var count = input.Length;
+
+            var isword = false;
+            var result = 0;
+
+            for (int i = 0; i < count; i++)
+            {
+                if(input[i]!=' ' && !isword)
+                {
+                    isword = true;
+                    result++;
+                }
+                else if(input[i]==' ' && isword)
+                {
+                    isword = false;
+                }
+            }
+
+            Console.WriteLine(result);
+        }
+    }
+}
+```
+
+#### 개선된 코드
+
+```
+using System;
+
+namespace BaekJoon
+{
+    internal class Question1152
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            var count = input.Length;
+
+            var isword = false;
+            var result = 0;
+
+            for (int i = 0; i < count; i++)
+            {
+                if(isword && input[i] != ' ')
+                {
+                    continue;
+                }
+
+                if (input[i] != ' ' && !isword)
+                {
+                    isword = true;
+                    result++;
+                    continue;
+                }
+
+                isword = false;
+            }
+
+            Console.WriteLine(result);
+        }
+    }
+}
+```
+
+---
+
+![image](https://user-images.githubusercontent.com/76270432/108369232-b418e000-723e-11eb-8362-375adc9af9e3.png)
+
+---
+
+* 정답 비율이 28.006%인 문제로 처음에 문제만 봤을 때는 그냥 Split()로 나누고 길이를 구하면 되는거 아니야? 하고 풀었다가 제출만 4번 연속 실패했다.
+
+* 단어가 등장할 때마다 등장 횟수를 세어 출력하는 문제로 간단해보이지만 단어 앞 뒤로 공백이 있는 경우 공백은 제외해야 한다.
+* 처음 제출할 때는 예제 입력값과 출력값이 정상적으로 나와서 제출했다가 문제를 다시 읽어보니 앞 뒤로 공백인 경우 또는 그냥 공백만 있는 경우 등의 경우의 수를 모두 다 따져봐야 되는 것이었다.
+  * String.Split() 함수로 자르는 경우 단어가 공백 하나만 있을 때도 길이값이 1이 되기 때문에 실패하던 것이었음
+* 따라서 문자열을 돌면서 단어가 시작되는 경우 개수를 증가시키고 공백이 나올 때까지 돌다가 공백이 나온 경우 다시 단어를 찾는 형식으로 하여 풀었다.
+* 첫 번째 코드에서 시간은 108ms가 걸렸으며 두 번째 코드에서는 104ms로 1등과 4ms 차이가 났다.
+* 풀면서 느낀 점은 문제를 유심히 잘 봐야하며 정답률이 낮은 경우 쉽게 보이는 문제라도 의심을 해봐야한다.
+
+
+
