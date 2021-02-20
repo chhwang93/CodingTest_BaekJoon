@@ -433,3 +433,103 @@ namespace BaekJoon
 
 
 
+### 2908번 문제 - 상수
+
+![image](https://user-images.githubusercontent.com/76270432/108595518-a5a80100-73c3-11eb-80d9-32d5bfdb4b7c.png)
+
+
+
+#### 첫 번째 작성한 코드
+
+```
+using System;
+
+namespace BaekJoon
+{
+    internal class Question2908
+    {
+        public static void Main(string[] args)
+        {
+            var inputArray = Console.ReadLine().Split(' ');
+
+            if (inputArray.Length == 2 && (inputArray[0] != inputArray[1]))
+            {
+                if (int.TryParse(inputArray[0], out int a) && int.TryParse(inputArray[1], out int b))
+                {
+                    var a_100digits = a / 100;
+                    var a_10digits = (a / 10) % 10;
+                    var a_1digits = (a % 10) % 10;
+                    var b_100digits = b / 100;
+                    var b_10digits = (b / 10) % 10;
+                    var b_1digits = (b % 10) % 10;
+
+                    if ((a_100digits !=0 && a_10digits != 0 && a_1digits!=0)
+                        && (b_100digits != 0 && b_10digits != 0 && b_1digits != 0))
+                    {
+                        var reverseA = a_1digits * 100 + a_10digits * 10 + a_100digits;
+                        var reverseB = b_1digits * 100 + b_10digits * 10 + b_100digits;
+
+                        Console.WriteLine(Math.Max(reverseA, reverseB));
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+#### 개선한 코드
+
+```
+using System;
+using System.Text;
+
+namespace BaekJoon
+{
+    internal class Question2908
+    {
+        public static void Main(string[] args)
+        {
+            var inputArray = Console.ReadLine().Split(' ');
+
+            if (inputArray.Length == 2 && (inputArray[0] != inputArray[1]))
+            {
+                var a = ReverseNumberFromString(inputArray[0]);
+                var b = ReverseNumberFromString(inputArray[1]);
+
+                if(a!=0 && b!=0)
+                {
+                    Console.WriteLine(Math.Max(a, b));
+                }
+            }
+        }
+
+        public static int ReverseNumberFromString(string value)
+        {
+            var charArray = value.ToCharArray();
+            var charCount = charArray.Length;
+            var sb = new StringBuilder();
+
+            for(int i= charCount-1; i>=0; i--)
+            {
+                var charValue = charArray[i] - 48;
+
+                if(charValue==0)
+                {
+                    return 0;
+                }
+
+                sb.Append(charValue);
+            }
+
+            return int.Parse(sb.ToString());
+        }
+    }
+}
+```
+
+* 입력된 두 개의 정수 값을 반대로 알아듣고 최대값을 구하는 문제
+* 첫 번째 풀이 방식에서는 입력값을 정수로 변환 후 각 자리수를 구하여 반대로 값을 구해 최대값을 구하는 방식으로 진행
+* 두 번째 풀이 방식에서는 함수를 통해 중복 코드 작성을 막고 문자를 아스키코드를 통해 각 자리수를 구하고 반대로 값을 구하여 반환하는 방식으로 진행
+* 첫 번째 방식과 두 번째 방식은 시간은 92ms가 걸렸으며 1등과 4ms가 차이가 났다.
+* 처음에 조건을 제대로 확인하지 않아 틀린  후 2번 째에 통과함
