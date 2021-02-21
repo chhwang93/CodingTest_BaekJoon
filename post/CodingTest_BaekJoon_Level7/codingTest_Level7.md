@@ -533,3 +533,127 @@ namespace BaekJoon
 * 두 번째 풀이 방식에서는 함수를 통해 중복 코드 작성을 막고 문자를 아스키코드를 통해 각 자리수를 구하고 반대로 값을 구하여 반환하는 방식으로 진행
 * 첫 번째 방식과 두 번째 방식은 시간은 92ms가 걸렸으며 1등과 4ms가 차이가 났다.
 * 처음에 조건을 제대로 확인하지 않아 틀린  후 2번 째에 통과함
+
+
+
+### 5622번 문제 - 다이얼
+
+![image](https://user-images.githubusercontent.com/76270432/108612805-4aabf380-742f-11eb-98e0-3f12e75de56a.png)
+
+---
+
+#### 첫 번째 작성한 코드
+
+```
+using System;
+
+namespace BaekJoon
+{
+    internal class Question5622
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            var count = input.Length;
+
+            if (count >= 2 && count <= 15)
+            {
+                var total = 0;
+
+                for(int i=0; i<count; i++)
+                {
+                    total += GetNumberFromAlphabet(input[i]);
+                }
+
+                Console.WriteLine(total);
+            }
+        }
+
+        public static int GetNumberFromAlphabet(char alphabet)
+        {
+            var alphabetASII = 65;
+            var value = alphabet - alphabetASII;
+
+            switch (value)
+            {
+                case 0:
+                case 1:
+                case 2:
+                    return 3;
+                case 3:
+                case 4:
+                case 5:
+                    return 4;
+                case 6:
+                case 7:
+                case 8:
+                    return 5;
+                case 9:
+                case 10:
+                case 11:
+                    return 6;
+                case 12:
+                case 13:
+                case 14:
+                    return 7;
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                    return 8;
+                case 19:
+                case 20:
+                case 21:
+                    return 9;
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                    return 10;
+            }
+
+            return 0;
+        }
+    }
+}
+```
+
+#### 개선한 코드
+
+```
+using System;
+
+namespace BaekJoon
+{
+    internal class Question5622
+    {
+        public static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            var count = input.Length;
+            var alphabetArray = new int[] { 3, 3, 3, 4, 4, 4, 5, 5, 5, 
+                6, 6, 6, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10 };
+
+            if (count >= 2 && count <= 15)
+            {
+                var total = 0;
+
+                for(int i=0; i<count; i++)
+                {
+                    total += alphabetArray[input[i]-65];
+                }
+
+                Console.WriteLine(total);
+            }
+        }
+    }
+}
+```
+
+* 각 다이얼의 숫자에는  각각의 대문자 알파벳이 주어지며, 문자열이 주어졌을 때 문자열에 맞는 다이얼 번호값의 총합을 출력하는 문제
+* 첫 번째 작성한 코드에서는 char 값을 입력으로 받는 함수를 작성하여 각 알파벳에 맞는 값을 반환하도록 코드를 작성하였다.
+* 개선한 코드에서는 알파벳의 배열에 각각의 값을 할당하고 해당 알파벳 인덱스를 입력하여 총합을 구하는 식으로 변경하여 코드의 길이를 줄였다.
+* 시간은 96ms로 1등과의 차이는 12ms로 제법 크게 났다.  1등의 코드를 확인하니 내 코드에서 조금 더 개선할 여지가 할 필요가 있었다.
+
+
+
