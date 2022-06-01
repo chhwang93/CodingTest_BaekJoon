@@ -45,9 +45,13 @@
   <ItemGroup>
     <Compile Include="CommonUtil.cs" />
     <Compile Include="DataStructure\FindTheAverageOfNumbers.cs" />
+    <Compile Include="DataStructure\FindTheSumOfNumbers5.cs" />
     <Compile Include="DataStructure\FindTheSumOfRemainder.cs" />
+    <Compile Include="DataStructure\GoodNumber.cs" />
+    <Compile Include="DataStructure\Jumong.cs" />
     <Compile Include="DataStructure\PrefixSum.cs" />
     <Compile Include="DataStructure\PrefixSumFromDimensionArray.cs" />
+    <Compile Include="IExecute.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataStructure\FindTheSumOfNumbers.cs" />

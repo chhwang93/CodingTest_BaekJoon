@@ -9,7 +9,7 @@ namespace CodingTestProject.DataStructure
     /// <summary>
     /// 숫자의 합 구하기
     /// </summary>
-    public class FindTheSumOfNumbers
+    public class FindTheSumOfNumbers : IExecute
     {
         public void Execute()
         {

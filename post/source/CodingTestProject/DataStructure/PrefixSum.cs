@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodingTestProject.DataStructure
 {
-    public class PrefixSum
+    public class PrefixSum : IExecute
     {
         public void Execute()
         {

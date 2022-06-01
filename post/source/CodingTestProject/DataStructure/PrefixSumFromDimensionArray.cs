@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodingTestProject.DataStructure
 {
-    public class PrefixSumFromDimensionArray
+    public class PrefixSumFromDimensionArray : IExecute
     {
         public void Execute()
         {

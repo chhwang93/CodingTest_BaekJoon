@@ -2,7 +2,7 @@
 
 namespace CodingTestProject.DataStructure
 {
-    public class FindTheSumOfRemainder
+    public class FindTheSumOfRemainder : IExecute
     {
         public void Execute()
         {

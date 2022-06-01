@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodingTestProject.DataStructure
 {
-    public class FindTheAverageOfNumbers
+    public class FindTheAverageOfNumbers : IExecute
     {
         public void Execute()
         {
