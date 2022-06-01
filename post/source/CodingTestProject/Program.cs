@@ -10,7 +10,7 @@ namespace CodingTestProject
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            IExecute excute = new GoodNumber();
+            IExecute excute = new StackSort();
             excute.Execute();
         }
     }
