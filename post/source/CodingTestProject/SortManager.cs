@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace CodingTestProject
+﻿namespace CodingTestProject
 {
     public static class SortManager
     {
@@ -39,34 +36,32 @@ namespace CodingTestProject
         }
         #endregion
 
-        #region 스테이블 삽입 정렬
-        public static void InsertionSort<T>(IList<T> list, Comparison<T> comparison)
+        #region 선택 정렬
+        public static void SelectionSort(ref int[] array)
         {
-            if(list==null)
+            for(int i=0; i<array.Length; i++)
             {
-                throw new ArgumentNullException("List");
-            }
+                var minValue = int.MaxValue;
+                var minIndex = 0;
 
-            if(comparison==null)
-            {
-                throw new ArgumentNullException("Comparison");
-            }
-
-            var count = list.Count;
-
-            for(int i=1; i<count; i++)
-            {
-                var value = list[i];
-
-                int j = i - 1;
-
-                for(; j>=0 && comparison(list[j], value) > 0; j--)
+                for(int j=i + 1; j<array.Length; j++)
                 {
-                    list[j + 1] = list[j];
+                    var value = array[j];
+                    if(minValue > value)
+                    {
+                        minValue = value;
+                        minIndex = j;
+                    }
                 }
-                list[j + 1] = value;
+
+                if (array[i] > minValue)
+                {
+                    var temp = array[i];
+                    array[i] = minValue;
+                    array[minIndex] = temp;
+                }
             }
         }
-#endregion
+        #endregion
     }
 }
