@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SortManager.cs" />
+    <Compile Include="Sort\BubbleSortProgram.cs" />
+    <Compile Include="Sort\NumberSort.cs" />
     <Compile Include="Template\CommonUtil.cs" />
     <Compile Include="DataStructure\AbsoluteValueHeap.cs" />
     <Compile Include="DataStructure\CardGame.cs" />

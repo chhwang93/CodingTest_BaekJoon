@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CodingTestProject.DataStructure
+namespace CodingTestProject
 {
     public enum PRIORITY_SORT_TYPE { ASCENDING, DESCENDING };
 

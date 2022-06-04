@@ -1,4 +1,4 @@
-﻿using CodingTestProject.DataStructure;
+﻿using CodingTestProject.Sort;
 using System;
 
 namespace CodingTestProject
@@ -11,7 +11,7 @@ namespace CodingTestProject
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            IExecute excute = new AbsoluteValueHeap();
+            IExecute excute = new BubbleSortProgram();
             excute.Execute();
         }
 
