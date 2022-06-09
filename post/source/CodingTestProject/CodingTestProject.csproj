@@ -44,8 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SortManager.cs" />
+    <Compile Include="Sort\ATMWithdrawal.cs" />
     <Compile Include="Sort\BubbleSortProgram.cs" />
+    <Compile Include="Sort\FindKNumber.cs" />
     <Compile Include="Sort\NumberSort.cs" />
+    <Compile Include="Sort\NumberSort2.cs" />
     <Compile Include="Sort\SelectionSort.cs" />
     <Compile Include="Template\CommonUtil.cs" />
     <Compile Include="DataStructure\AbsoluteValueHeap.cs" />

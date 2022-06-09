@@ -11,7 +11,7 @@ namespace CodingTestProject
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            IExecute excute = new SelectionSort();
+            IExecute excute = new NumberSort2();
             excute.Execute();
         }
 
