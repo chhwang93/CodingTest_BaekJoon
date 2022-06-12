@@ -1,5 +1,8 @@
-﻿using CodingTestProject.Sort;
+﻿using CodingTestProject.Search;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace CodingTestProject
 {
@@ -11,7 +14,7 @@ namespace CodingTestProject
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            IExecute excute = new NumberSort2();
+            IExecute excute = new DFSAndBFS();
             excute.Execute();
         }
 

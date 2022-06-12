@@ -43,12 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Search\DFSAndBFS.cs" />
+    <Compile Include="Search\FindNumberOfConnectedElements.cs" />
+    <Compile Include="Search\FindOddPrimeNumbers.cs" />
+    <Compile Include="Search\GetFrendship.cs" />
     <Compile Include="SortManager.cs" />
     <Compile Include="Sort\ATMWithdrawal.cs" />
     <Compile Include="Sort\BubbleSortProgram.cs" />
+    <Compile Include="Sort\BubbleSortProgram2.cs" />
     <Compile Include="Sort\FindKNumber.cs" />
     <Compile Include="Sort\NumberSort.cs" />
     <Compile Include="Sort\NumberSort2.cs" />
+    <Compile Include="Sort\NumberSort3.cs" />
     <Compile Include="Sort\SelectionSort.cs" />
     <Compile Include="Template\CommonUtil.cs" />
     <Compile Include="DataStructure\AbsoluteValueHeap.cs" />

@@ -169,5 +169,25 @@ namespace CodingTestProject
             return result;
         }
         #endregion
+
+        #region 소수 구하기
+        /// <summary>
+        /// 소수 구하기
+        /// </summary>
+        /// <param name="num">입력 값</param>
+        /// <returns>True-소수/False-소수가 아님</returns>
+        public static bool CheckIsPrimeNumber(int num)
+        {
+            for(int i=2; i*i<=num; i++)
+            {
+                if(num % i==0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        #endregion
     }
 }
