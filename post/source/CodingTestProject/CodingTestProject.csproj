@@ -47,6 +47,7 @@
     <Compile Include="Search\FindNumberOfConnectedElements.cs" />
     <Compile Include="Search\FindOddPrimeNumbers.cs" />
     <Compile Include="Search\GetFrendship.cs" />
+    <Compile Include="Search\MazeSearch.cs" />
     <Compile Include="SortManager.cs" />
     <Compile Include="Sort\ATMWithdrawal.cs" />
     <Compile Include="Sort\BubbleSortProgram.cs" />
